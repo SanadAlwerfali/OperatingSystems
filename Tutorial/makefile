@@ -1,2 +1,2 @@
-test: test.c
-	gcc test.c -o testoutput
+test: basic_print_tutorial.c
+	gcc basic_print_tutorial.c -o basic_print_tutorial
