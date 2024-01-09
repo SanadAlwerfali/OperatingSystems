@@ -6,3 +6,4 @@ Please note that I don't allow my code to be used without my permission. Thanks 
 - basic_print_tutorial
 - basic_pointers_tutorial
 - basic_OOP_tutorial
+- basic_memory_tutorial
