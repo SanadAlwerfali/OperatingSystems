@@ -72,6 +72,6 @@ int main() {
     //we’re just passing the pointer to the array, which is more memory-efficient
     int array[5] = {12, 4, 2, 5, 12};
     printArray(array, 5);
-    
+
     return 0;
 }
