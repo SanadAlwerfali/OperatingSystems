@@ -11,3 +11,18 @@ To build all tutorials navigate to `./Tutorials` and run `make all` 😉
 - basic_OOP_tutorial
 - basic_memory_tutorial
 - basic_vtable_tutorial
+
+### Lab #1 
+The goal of this lab is to explore how programs work when you don’t get as much help from the compiler or run-time as you would with a higher-level language like C++, Go, Java or Rust. By the end of this lab you should be able to:
+
+1. manage memory manually,
+
+2. use (and misuse!) C-style strings,
+
+3. use libc functions for I/O,
+
+4. use compiler flags, manual pages and inspection tools such as nm(1) and objdump(1),
+
+5. discuss symbol naming in C vs C++ and other languages, and
+
+6. write and use C macros.
