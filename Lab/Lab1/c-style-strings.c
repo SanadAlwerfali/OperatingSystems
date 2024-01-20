@@ -10,13 +10,12 @@ int main() {
 
     char initials[] = "SA";
 
+    printf("The length of initials before strcpy is: %zu\n", strlen(initials));
+    
     strcpy(initials, "Sanad");
+    
+    printf("The length of initials after strcpy is: %zu\n", strlen(initials));
 
-    printf("The length of initials is: %zu\n", strlen(initials));
-
-    for (int i = 0; i < strlen(initials); ++i) {
-        printf("%c\n", initials[i]);
-    }
 
     return 0;
 }
