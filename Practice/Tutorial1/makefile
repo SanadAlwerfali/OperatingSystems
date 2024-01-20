@@ -22,3 +22,10 @@ help:
 	@echo "  - memory      : Build memory program"
 	@echo "  - vtable      : Build v-table program"
 	@echo "**********************************************************"
+
+clean:
+	@echo ""
+	@echo "Delete un-needed files"
+	@echo ""
+	rm basic_memory_tutorial basic_pointers_tutorial basic_OOP_tutorial basic_print_tutorial basic_vtable_tutorial
+

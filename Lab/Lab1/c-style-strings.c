@@ -7,13 +7,16 @@ int main() {
     
     fwrite(text, sizeof(char), strlen(text), stdout);
 
-    // char initials[] = "SA";
-    // strcpy(initials, "Sanad");
 
-    // for (int i = 0; i < strlen(initials); ++i) {
-    //     printf("%c\n", initials[i]);
-    // }
+    char initials[] = "SA";
 
+    strcpy(initials, "Sanad");
+
+    printf("The length of initials is: %zu\n", strlen(initials));
+
+    for (int i = 0; i < strlen(initials); ++i) {
+        printf("%c\n", initials[i]);
+    }
 
     return 0;
 }

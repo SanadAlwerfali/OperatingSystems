@@ -5,6 +5,6 @@ c-math: c-math.c
 c-string: c-style-strings.c
 	gcc -g c-style-strings.c -o c-style-strings
 c-io: c-io.c
-	gcc -c c-io.c -o c-io.o
+	gcc -g c-io.c -o c-io
 c-memory: c-memory.c
 	gcc -c c-memory.c -o c-memory
