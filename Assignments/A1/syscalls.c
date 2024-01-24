@@ -10,9 +10,32 @@ void help_command() {
     write(2, message, strlen(message));
 }
 
-void read_command(char* path[]) {
+int read_command(char* path[]) {
+    if (path == NULL || *path == NULL) {
+        printf("missing argument\n");
+        return 1;
+    }
 
+    int file = open(*path, O_RDONLY);
 
+    if (file == -1) {
+        printf("Failed to open %s\n", *path);
+        return 1;
+    }
+
+    char buff[256];
+
+    int text = read(file, buff, sizeof(buff));
+
+    if (text == -1) {
+        printf("Faild to read %s\n", *path);
+        return 1;
+    }
+
+    buff[text] = '\0';
+    write(2, buff, text);
+
+    return 0;
 }
 
 void write_command(char* path[], char* line_of_text[]) {
