@@ -6,31 +6,29 @@
 #include <sys/wait.h>
 
 void help_command() {
-
-    return 0;
+    char *message = "Usage:  syscalls <command> [arguments]\n";
+    write(2, message, strlen(message));
 }
 
 void read_command(char* path[]) {
 
 
-    return 0;
 }
 
 void write_command(char* path[], char* line_of_text[]) {
 
 
-    return 0;
 }
 
 void mkdir_command(char* path[]) {
 
-    return 0;
 }
 
 int main (int argc, char* argv[]) {
 
     if (argc < 2) {
-        printf("missing command");
+        printf("missing command\n");
+        return 1;
     };
 
     const char *command = argv[1];
@@ -38,13 +36,13 @@ int main (int argc, char* argv[]) {
     if (strcmp(command, "help") == 0) {
         help_command();
     } else if (strcmp(command, "read") == 0){
-        read_command(argv[2]);
+        read_command(&argv[2]);
     } else if (strcmp(command, "write") == 0){
-        write_command(argv[2], argv[3]);
+        write_command(&argv[2], &argv[3]);
     } else if (strcmp(command, "mkdir") == 0){
-        mkdir_command(argv[2]);
+        mkdir_command(&argv[2]);
     } else {
-        printf("invalid command");
+        printf("invalid command\n");
         return 1;
     }
 
