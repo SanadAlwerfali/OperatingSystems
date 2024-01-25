@@ -4,11 +4,18 @@
 #include <fcntl.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <errno.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
+void change_num (int* num) {
+    *num = 20;
+}
 void help_command() {
     char *message = "Usage:  syscalls <command> [arguments]\n";
     write(2, message, strlen(message));
 }
+
 
 int read_command(char* path[]) {
     if (path == NULL || *path == NULL) {
@@ -34,7 +41,7 @@ int read_command(char* path[]) {
 
     buff[text] = '\0';
     write(2, buff, text);
-
+    close(file);
     return 0;
 }
 
@@ -72,21 +79,32 @@ int write_command(char* path[], char* line_of_text[], int num_of_lines) {
     }
 
     printf("Wrote %d B\n", total_bytes);
-
+    close(file);
     return 0;
 }
 
 int mkdir_command(char* path[]) {
-    if (path == NULL || *path == NULL) {
-        printf("missing argument\n");
+    mode_t mode = 0700;
+    int dir = mkdir(*path, mode);
+
+    if (dir == -1 && errno == EEXIST){
+        printf("%s already exists\n", *path);
+        return 1;
+    } 
+    if (dir == -1){
+        printf("Faild to create %s\n", *path);
         return 1;
     }
+
     return 0;
 }
 
 int main (int argc, char* argv[]) {
+    char* invalid = "invalid command\n";
+    char* missing = "missing command\n";
+
     if (argc < 2) {
-        printf("missing command\n");
+        write(2, missing, strlen(missing));
         return 1;
     };
 
@@ -101,7 +119,7 @@ int main (int argc, char* argv[]) {
     } else if (strcmp(command, "mkdir") == 0){
         mkdir_command(&argv[2]);
     } else {
-        printf("invalid command\n");
+        write(2, invalid, strlen(invalid));
         return 1;
     }
 
